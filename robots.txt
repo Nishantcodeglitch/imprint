@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /html/admin.html
+
+Sitemap: https://imprint-one.vercel.app/sitemap.xml

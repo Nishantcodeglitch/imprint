@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINT — Gigs & Events | Upcoming Shows in Goa</title>
+  <meta name="description" content="View IMPRINT's upcoming and past gigs — DJ events, club nights, beach parties, and festivals across Goa and India." />
+  <meta name="keywords" content="IMPRINT gigs, DJ events Goa, upcoming shows, club nights, beach parties, Goa nightlife events" />
+  <meta name="author" content="Ankith Kedar" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="IMPRINT — Gigs & Events | Upcoming Shows in Goa" />
+  <meta property="og:description" content="Upcoming and past gigs — DJ events, club nights, beach parties, and festivals across Goa and India." />
+  <meta property="og:image" content="https://imprint-one.vercel.app/assets/hero7.jpeg" />
+  <meta property="og:url" content="https://imprint-one.vercel.app/html/gigs.html" />
+  <meta property="og:site_name" content="IMPRINT" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IMPRINT — Gigs & Events" />
+  <meta name="twitter:description" content="Upcoming and past gigs across Goa and India." />
+  <meta name="twitter:image" content="https://imprint-one.vercel.app/assets/hero7.jpeg" />
+  <link rel="canonical" href="https://imprint-one.vercel.app/html/gigs.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-3d"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="music.html">Music</a>
+      <a href="gigs.html" class="active">Gigs</a>
+      <a href="venues.html">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </header>
+    
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <!-- 3D DJ Turntable Decoration -->
+    <div class="page-dj-deco">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b2fff" />
+            <stop offset="100%" stop-color="#00d4ff" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Turntable base -->
+        <rect x="20" y="160" width="260" height="120" rx="12" fill="rgba(10,10,30,0.95)" stroke="url(#tg)"
+          stroke-width="1.5" />
+        <!-- Main platter -->
+        <circle cx="110" cy="200" r="70" fill="rgba(15,5,40,0.9)" stroke="url(#tg)" stroke-width="1.5" />
+        <circle cx="110" cy="200" r="55" fill="rgba(10,3,30,1)" stroke="rgba(0,212,255,0.2)" stroke-width="1" />
+        <circle cx="110" cy="200" r="35" fill="rgba(8,2,25,1)" stroke="rgba(123,47,255,0.4)" stroke-width="1" />
+        <circle cx="110" cy="200" r="8" fill="#00d4ff" filter="url(#glow)" />
+        <circle cx="110" cy="200" r="65" fill="none" stroke="rgba(123,47,255,0.1)" stroke-width="0.5"
+          stroke-dasharray="4 3" />
+        <circle cx="110" cy="200" r="45" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="0.5"
+          stroke-dasharray="4 3" />
+        <!-- Tonearm -->
+        <line x1="170" y1="168" x2="140" y2="198" stroke="url(#tg)" stroke-width="3" stroke-linecap="round" />
+        <circle cx="170" cy="162" r="8" fill="rgba(25,10,60,1)" stroke="url(#tg)" stroke-width="1.5" />
+        <circle cx="137" cy="201" r="5" fill="#ff2d78" filter="url(#glow)" />
+        <!-- Mixer right side -->
+        <rect x="200" y="170" width="60" height="80" rx="6" fill="rgba(15,5,40,0.9)" stroke="rgba(123,47,255,0.4)"
+          stroke-width="1" />
+        <circle cx="215" cy="185" r="6" fill="rgba(255,45,120,0.8)" filter="url(#glow)" />
+        <circle cx="230" cy="185" r="6" fill="rgba(123,47,255,0.8)" filter="url(#glow)" />
+        <circle cx="245" cy="185" r="6" fill="rgba(0,212,255,0.8)" filter="url(#glow)" />
+        <rect x="225" y="198" width="10" height="35" rx="3" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.4)"
+          stroke-width="1" />
+        <rect x="223" y="212" width="14" height="7" rx="2" fill="rgba(0,212,255,0.7)" />
+        <!-- Floating notes -->
+        <text x="240" y="140" font-size="18" fill="rgba(0,212,255,0.5)" font-family="serif">♪</text>
+        <text x="30" y="150" font-size="14" fill="rgba(255,45,120,0.4)" font-family="serif">♫</text>
+        <text x="260" y="170" font-size="12" fill="rgba(123,47,255,0.5)" font-family="serif">♩</text>
+        <!-- Glow under -->
+        <ellipse cx="150" cy="285" rx="120" ry="12" fill="rgba(123,47,255,0.12)" filter="url(#glow)" />
+      </svg>
+    </div>
+    <div class="page-hero-content">
+      <p class="page-kicker">// 03 — Tour</p>
+      <h1 class="page-title">Our <span class="grad">Gigs</span></h1>
+      <p class="page-desc">From intimate beach sessions to high-energy nightclub residencies — every night is a sonic
+        journey crafted just for you.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GIGS SECTION -->
+  <section class="section">
+    <div class="tab-row">
+      <button id="tabUpcoming" class="tab-btn" onclick="switchTab('upcoming')">Upcoming Gigs</button>
+      <button id="tabPast" class="tab-btn active" onclick="switchTab('past')">Past Gigs</button>
+    </div>
+
+    <!-- UPCOMING -->
+    <div id="upcomingTab" style="display:none;">
+      <div class="countdown-wrap reveal">
+        <p class="countdown-label">Next Event Countdown</p>
+        <div class="countdown-boxes">
+          <div class="cd-box">
+            <div class="cd-num" id="cdDays">00</div>
+            <div class="cd-unit">DAYS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdHours">00</div>
+            <div class="cd-unit">HOURS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdMins">00</div>
+            <div class="cd-unit">MINS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdSecs">00</div>
+            <div class="cd-unit">SECS</div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="text-align:center;font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;">
+        Stay tuned for upcoming announcements</p>
+    </div>
+
+    <!-- PAST GIGS -->
+    <div id="pastTab">
+
+      <!-- Loading Skeleton -->
+      <div id="gigsLoading" style="display:flex;flex-direction:column;gap:20px;">
+        <div class="past-gig-card reveal" style="min-height:180px;opacity:0.4;animation:gigShimmer 1.5s infinite;">
+          <div style="width:100%;height:180px;background:rgba(255,255,255,0.03);border-radius:8px;"></div>
+          <div class="past-gig-content" style="padding:20px;">
+            <div style="width:60%;height:14px;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:12px;"></div>
+            <div style="width:80%;height:18px;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:10px;"></div>
+            <div style="width:90%;height:12px;background:rgba(255,255,255,0.04);border-radius:4px;margin-bottom:8px;"></div>
+            <div style="width:70%;height:12px;background:rgba(255,255,255,0.04);border-radius:4px;"></div>
+          </div>
+        </div>
+        <div class="past-gig-card reveal" style="min-height:180px;opacity:0.3;animation:gigShimmer 1.5s infinite 0.3s;">
+          <div style="width:100%;height:180px;background:rgba(255,255,255,0.03);border-radius:8px;"></div>
+          <div class="past-gig-content" style="padding:20px;">
+            <div style="width:55%;height:14px;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:12px;"></div>
+            <div style="width:75%;height:18px;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:10px;"></div>
+            <div style="width:85%;height:12px;background:rgba(255,255,255,0.04);border-radius:4px;"></div>
+          </div>
+        </div>
+        <div class="past-gig-card reveal" style="min-height:180px;opacity:0.2;animation:gigShimmer 1.5s infinite 0.6s;">
+          <div style="width:100%;height:180px;background:rgba(255,255,255,0.03);border-radius:8px;"></div>
+          <div class="past-gig-content" style="padding:20px;">
+            <div style="width:50%;height:14px;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:12px;"></div>
+            <div style="width:70%;height:18px;background:rgba(255,255,255,0.06);border-radius:4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        @keyframes gigShimmer { 0%,100%{opacity:0.3;} 50%{opacity:0.6;} }
+        #gigsError { text-align:center;padding:60px 24px; }
+        #gigsError p { font-family:var(--font-mono);font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;margin-bottom:20px; }
+        #gigsError button { font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;padding:10px 24px;border-radius:8px;border:1px solid rgba(123,47,255,0.4);background:rgba(123,47,255,0.1);color:#7b2fff;cursor:pointer;transition:all 0.25s; }
+        #gigsError button:hover { background:rgba(123,47,255,0.2);border-color:rgba(123,47,255,0.6); }
+        #gigsEmpty { text-align:center;padding:60px 24px;display:none; }
+        #gigsEmpty p { font-family:var(--font-mono);font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em; }
+      </style>
+
+      <!-- Dynamic Gig Cards Container -->
+      <div id="gigsContainer"></div>
+
+      <!-- Empty State -->
+      <div id="gigsEmpty">
+        <p style="font-size:2rem;margin-bottom:8px;opacity:0.3;">🎵</p>
+        <p>No past gigs to display yet</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="gigsError" style="display:none;">
+        <p style="font-size:2rem;margin-bottom:8px;opacity:0.3;">⚠️</p>
+        <p>Could not load gigs — server may be offline</p>
+        <button onclick="fetchAndRenderGigs()">↻ Retry</button>
+      </div>
+
+      <!-- Upcoming Gigs Container (rendered dynamically) -->
+      <div id="upcomingGigsContainer" style="display:none;margin-bottom:32px;"></div>
+
+      <div style="margin-top:48px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20enquire%20about%20upcoming%20gigs."
+          target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+          </svg>
+          &nbsp;Enquire via WhatsApp
+        </a>
+        <p style="font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;">Fastest
+          response via WhatsApp · Also available for Twitch live stream bookings</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+ <footer>
+    <div class="footer-brand">Imprint</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/new" target="_blank" rel="noopener noreferrer" aria-label="Apple Music"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg></a>
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud"><svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg></a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" rel="noopener noreferrer" aria-label="Mixcloud"><svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg></a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" rel="noopener noreferrer" aria-label="Twitch"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+      <a href="https://x.com/imprintverse" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg></a>
+    </div>
+    <div class="footer-copy">Imprint © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative | <a href="/admin/" style="color:var(--muted);text-decoration:none;">Admin</a></div>
+  </footer>
+
+  <a href="#" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+  <script>
+    /* ── Dynamic Gigs Loader ── */
+    const API_BASE = window.location.origin || '';
+    const hoverColors = ['var(--purple)', 'var(--blue)', 'var(--pink)', 'var(--gold)'];
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    function renderGigCard(gig, index, isFirstUpcoming = false) {
+      const color = hoverColors[index % hoverColors.length];
+      const imgTag = gig.imageUrl
+        ? `<img src="${escapeHtml(gig.imageUrl)}" alt="${escapeHtml(gig.title)}" onerror="this.parentElement.classList.add('no-image'); this.style.display='none';" />`
+        : '';
+      const isPast = gig.status !== 'upcoming';
+      const badgeHtml = isPast
+        ? `<div class="past-gig-badge"><span>✓</span><span>Played</span></div>`
+        : `<div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start; margin-top:16px;">
+             <div class="past-gig-badge" style="background:rgba(0,230,118,0.1);border-color:rgba(0,230,118,0.25);margin-top:0;"><span style="color:#00e676;">●</span><span style="color:#00e676;">Upcoming</span></div>
+             <a href="https://wa.me/919923580022?text=Hi%2C%20I%20would%20like%20to%20book%20tickets%20for%20${encodeURIComponent(gig.title)}%20on%20${encodeURIComponent(gig.datePill || gig.date)}." target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:8px 24px; background:linear-gradient(135deg, var(--purple), var(--pink)); color:#fff; border-radius:20px; font-size:0.75rem; font-family:'DM Mono', monospace; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; text-decoration:none;">Book Now ↗</a>
+           </div>`;
+
+      const timerHtml = isFirstUpcoming ? `<div id="countdownInjectTarget" style="display:flex; align-items:center; justify-content:center; padding: 24px 32px 24px 0;"></div>` : '';
+
+      return `
+        <style>
+          .past-gig-card.no-image { grid-template-columns: 1fr; }
+          .past-gig-card.has-timer { grid-template-columns: 180px 1fr auto; }
+          .past-gig-card.no-image.has-timer { grid-template-columns: 1fr auto; }
+          .past-gig-card .past-gig-content { padding-left: 40px; } /* Shift details to the right, away from photo */
+          @media (max-width: 1000px) { 
+            .past-gig-card.has-timer, .past-gig-card.no-image.has-timer { grid-template-columns: 1fr; } 
+            #countdownInjectTarget { padding: 0 24px 32px 24px !important; }
+            .past-gig-card .past-gig-content { padding-left: 18px; }
+          }
+        </style>
+        <div class="past-gig-card reveal visible ${gig.imageUrl ? '' : 'no-image'} ${isFirstUpcoming ? 'has-timer' : ''}"
+             onmouseover="this.style.borderColor='${color}'"
+             onmouseout="this.style.borderColor='var(--border)'">
+          ${imgTag}
+          <div class="past-gig-content">
+            <div>
+              <div class="past-gig-date-pill">${escapeHtml(gig.datePill || gig.date)}</div>
+              <h3 class="past-gig-title">${escapeHtml(gig.title)}</h3>
+              <div class="past-gig-meta">
+                <span>📅 ${escapeHtml(gig.datePill || gig.date)}</span>
+                ${gig.time ? `<span>🕓 ${escapeHtml(gig.time)}</span>` : ''}
+                ${gig.location ? `<span>📍 ${escapeHtml(gig.location)}</span>` : ''}
+                <span>🎵 ${escapeHtml(gig.category)}</span>
+              </div>
+              <p class="past-gig-desc">${escapeHtml(gig.description)}</p>
+            </div>
+            ${badgeHtml}
+          </div>
+          ${timerHtml}
+        </div>`;
+    }
+
+    async function fetchAndRenderGigs() {
+      const loading = document.getElementById('gigsLoading');
+      const container = document.getElementById('gigsContainer');
+      const empty = document.getElementById('gigsEmpty');
+      const error = document.getElementById('gigsError');
+
+      // Reset states
+      loading.style.display = '';
+      container.innerHTML = '';
+      empty.style.display = 'none';
+      error.style.display = 'none';
+
+      try {
+        const res = await fetch(API_BASE + '/api/gigs');
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
+        const json = await res.json();
+        if (!json.success) throw new Error(json.error || 'Unknown error');
+
+        const allGigs = json.data;
+        loading.style.display = 'none';
+
+        // Separate into past and upcoming
+        const now = new Date();
+        const pastGigs = allGigs.filter(g => g.status === 'past' || new Date(g.date) < now);
+        const upcomingGigs = allGigs.filter(g => g.status === 'upcoming' && new Date(g.date) >= now);
+
+        // Render past gigs in the past tab
+        if (pastGigs.length === 0 && upcomingGigs.length === 0) {
+          empty.style.display = '';
+        } else {
+          // Sort past gigs by date descending
+          pastGigs.sort((a, b) => new Date(b.date) - new Date(a.date));
+          container.innerHTML = pastGigs.map((g, i) => renderGigCard(g, i)).join('');
+        }
+
+        // Render upcoming gigs in the upcoming tab
+        const upcomingContainer = document.getElementById('upcomingTab');
+        if (upcomingGigs.length > 0) {
+          // Sort upcoming by date ascending (soonest first)
+          upcomingGigs.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+          // Update countdown to nearest upcoming gig
+          const nextGig = upcomingGigs[0];
+          if (nextGig && window.switchTab) {
+            // The countdown in main.js uses a fixed date — override it
+            const cdTarget = new Date(nextGig.date + 'T23:59:59');
+            function updateDynamicCountdown() {
+              const cdDays = document.getElementById('cdDays');
+              if (!cdDays) return;
+              const diff = cdTarget - new Date();
+              if (diff <= 0) {
+                ['Days', 'Hours', 'Mins', 'Secs'].forEach(u => {
+                  const el = document.getElementById('cd' + u);
+                  if (el) el.textContent = '00';
+                });
+                return;
+              }
+              const d = Math.floor(diff / 86400000);
+              const h = Math.floor((diff % 86400000) / 3600000);
+              const m = Math.floor((diff % 3600000) / 60000);
+              const s = Math.floor((diff % 60000) / 1000);
+              cdDays.textContent = String(d).padStart(2, '0');
+              document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+              document.getElementById('cdMins').textContent = String(m).padStart(2, '0');
+              document.getElementById('cdSecs').textContent = String(s).padStart(2, '0');
+            }
+            updateDynamicCountdown();
+            setInterval(updateDynamicCountdown, 1000);
+          }
+
+          // Inject upcoming gig cards into the upcoming tab (after countdown)
+          const upcomingCardsHtml = upcomingGigs.map((g, i) => renderGigCard(g, i, i === 0)).join('');
+          const upcomingNote = upcomingContainer.querySelector('p[style]');
+          if (upcomingNote) {
+            upcomingNote.insertAdjacentHTML('afterend', upcomingCardsHtml);
+            
+            // Move countdown timer into the first card
+            const countdownWrap = document.querySelector('.countdown-wrap');
+            const countdownTarget = document.getElementById('countdownInjectTarget');
+            if (countdownWrap && countdownTarget) {
+              countdownWrap.style.marginBottom = '0';
+              const label = countdownWrap.querySelector('.countdown-label');
+              if (label) label.style.display = 'none';
+              
+              // Scale down the countdown boxes to fit well inside the card and make them black/dark
+              const boxes = countdownWrap.querySelectorAll('.cd-num');
+              boxes.forEach(b => {
+                b.style.width = '58px';
+                b.style.height = '64px';
+                b.style.fontSize = '2.2rem';
+                b.style.fontFamily = 'var(--font-heading)';
+                b.style.background = 'rgba(255, 255, 255, 0.03)';
+                b.style.border = '1px solid rgba(255, 255, 255, 0.06)';
+                b.style.borderRadius = '8px';
+                b.style.color = '#fff';
+                b.style.boxShadow = 'none';
+                b.style.textShadow = '0 2px 10px rgba(255,255,255,0.1)';
+              });
+              const seps = countdownWrap.querySelectorAll('.cd-sep');
+              seps.forEach(s => {
+                s.style.display = 'none';
+              });
+              const labels = countdownWrap.querySelectorAll('.cd-label');
+              labels.forEach(l => {
+                l.style.fontSize = '0.6rem';
+                l.style.marginTop = '8px';
+                l.style.color = 'rgba(255,255,255,0.4)';
+                l.style.letterSpacing = '0.2em';
+              });
+              const boxContainer = countdownWrap.querySelector('.countdown-boxes');
+              if (boxContainer) {
+                boxContainer.style.gap = '12px';
+              }
+              
+              countdownTarget.appendChild(countdownWrap);
+            }
+          }
+        }
+
+        // Re-observe reveal animations for dynamically added cards
+        const revealEls = document.querySelectorAll('.past-gig-card.reveal:not(.visible)');
+        if (revealEls.length > 0) {
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+          }, { threshold: 0.1 });
+          revealEls.forEach(el => observer.observe(el));
+        }
+
+      } catch (err) {
+        console.error('Failed to load gigs:', err);
+        loading.style.display = 'none';
+        error.style.display = '';
+      }
+    }
+
+    // Fetch gigs on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchAndRenderGigs();
+    });
+  </script>
+
+
+</body>
+
+</html>

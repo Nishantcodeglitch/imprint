@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPRINT — Admin Panel</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: #030306;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .admin-container, .login-container {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+    }
+    .login-container { max-width: 400px; text-align: center; margin-top: 100px; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .form-group { margin-bottom: 24px; }
+    label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus {
+      outline: 2px solid var(--purple);
+      outline-offset: 2px;
+      border-color: transparent;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background: var(--blue); }
+    .btn-submit:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    .status-error { color: #ff2d78; }
+    .status-success { color: #00d4ff; }
+    .status-loading { color: #7b2fff; }
+    .gigs-list {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .gig-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .gig-row-title { font-family: var(--font-body); }
+    .gig-row-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+    .btn-del {
+      background: rgba(255,45,120,0.2);
+      color: #ff2d78;
+      border: 1px solid #ff2d78;
+      padding: 4px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+    .btn-del:focus-visible {
+      outline: 2px solid #ff2d78;
+      outline-offset: 2px;
+    }
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .btn-logout {
+      background: rgba(255,45,120,0.2);
+      color: #ff2d78;
+      border: 1px solid #ff2d78;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    .btn-logout:focus-visible {
+      outline: 2px solid #ff2d78;
+      outline-offset: 2px;
+    }
+    #loginError { margin-top: 10px; color: #ff2d78; font-family: var(--font-mono); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="login-container" id="loginBox">
+    <h1>Admin Login</h1>
+    <div class="form-group">
+      <label for="adminUser">Username</label>
+      <input type="text" id="adminUser" placeholder="Username" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label for="adminPwd">Password</label>
+      <input type="password" id="adminPwd" placeholder="Password" autocomplete="current-password">
+    </div>
+    <button class="btn-submit" id="loginBtn">LOGIN</button>
+    <div id="loginError"></div>
+  </div>
+
+  <div class="admin-container" id="adminBox" style="display:none;">
+    <div class="header-bar">
+      <h1>Add New Gig</h1>
+      <button class="btn-logout" id="logoutBtn">Logout</button>
+    </div>
+    <form id="gigForm">
+      <div class="form-group">
+        <label for="gTitle">Event Title *</label>
+        <input type="text" id="gTitle" required placeholder="e.g. Neon Tide">
+      </div>
+      <div class="form-group" style="display:flex; gap:16px;">
+        <div style="flex:1;">
+          <label for="gDate">Date *</label>
+          <input type="date" id="gDate" required>
+        </div>
+        <div style="flex:1;">
+          <label for="gTime">Time</label>
+          <input type="text" id="gTime" placeholder="e.g. 08:30 PM">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="gVenue">Venue *</label>
+        <input type="text" id="gVenue" required placeholder="e.g. Anjuna Beach Club, Goa">
+      </div>
+      <div class="form-group">
+        <label for="gCategory">Category *</label>
+        <select id="gCategory" required>
+          <option value="Organic House">Organic House</option>
+          <option value="Deep / Organic House">Deep / Organic House</option>
+          <option value="Techno / Electronic">Techno / Electronic</option>
+          <option value="Afro House">Afro House</option>
+          <option value="House / Electronic">House / Electronic</option>
+          <option value="Electronic">Electronic</option>
+          <option value="DJ + Sitar Fusion">DJ + Sitar Fusion</option>
+          <option value="Nightclub">Nightclub</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gImage">Event Poster Image (Max 5MB, JPG/PNG/GIF/WebP only)</label>
+        <input type="file" id="gImage" accept="image/jpeg,image/png,image/gif,image/webp">
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">SAVE GIG</button>
+    </form>
+    <div id="status"></div>
+
+    <div class="gigs-list">
+      <h3>Manage Gigs</h3>
+      <div id="gigsListContainer">Loading...</div>
+    </div>
+  </div>
+
+  <script>
+    const API = window.location.origin;
+
+    function $(id) { return document.getElementById(id); }
+
+    function showStatus(msg, type) {
+      const el = $('status');
+      if (!el) return;
+      el.className = 'status-' + type;
+      el.textContent = msg;
+      if (type === 'success') setTimeout(() => { el.textContent = ''; }, 3000);
+    }
+
+    /* ── Auth Check ── */
+    async function checkAuth() {
+      try {
+        const res = await fetch(API + '/api/auth/check', { credentials: 'include' });
+        const json = await res.json();
+        if (json.authenticated) {
+          $('loginBox').style.display = 'none';
+          $('adminBox').style.display = 'block';
+          loadGigsList();
+        }
+      } catch (e) {
+        console.error('Auth check failed:', e);
+      }
+    }
+
+    /* ── Login ── */
+    async function handleLogin() {
+      const username = $('adminUser').value;
+      const password = $('adminPwd').value;
+      const errorEl = $('loginError');
+      if (!username || !password) {
+        errorEl.textContent = 'Please enter username and password.';
+        return;
+      }
+      errorEl.textContent = '';
+      try {
+        const res = await fetch(API + '/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ username, password }),
+        });
+        const json = await res.json();
+        if (json.success) {
+          $('loginBox').style.display = 'none';
+          $('adminBox').style.display = 'block';
+          $('adminUser').value = '';
+          $('adminPwd').value = '';
+          loadGigsList();
+        } else {
+          errorEl.textContent = json.error || 'Invalid credentials.';
+        }
+      } catch (e) {
+        errorEl.textContent = 'Login failed. Please try again.';
+      }
+    }
+
+    /* ── Logout ── */
+    async function handleLogout() {
+      try {
+        await fetch(API + '/api/auth/logout', {
+          method: 'POST',
+          credentials: 'include',
+        });
+      } catch (e) { /* ignore */ }
+      $('adminBox').style.display = 'none';
+      $('loginBox').style.display = 'block';
+    }
+
+    /* ── Create Gig ── */
+    async function createGig(e) {
+      e.preventDefault();
+      const fileInput = $('gImage');
+      const file = fileInput?.files?.[0];
+      const submitBtn = $('submitBtn');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'UPLOADING...';
+      showStatus('Uploading image...', 'loading');
+
+      try {
+        let imageUrl = '';
+        if (file) {
+          const reader = new FileReader();
+          const base64 = await new Promise((resolve, reject) => {
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+
+          const uploadRes = await fetch(API + '/api/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ filename: file.name, data: base64, mimeType: file.type }),
+            credentials: 'include',
+          });
+          const uploadJson = await uploadRes.json();
+          if (!uploadJson.success) throw new Error(uploadJson.error || 'Upload failed');
+          imageUrl = uploadJson.url;
+        }
+
+        submitBtn.textContent = 'SAVING...';
+        showStatus('Saving gig...', 'loading');
+
+        const gigData = {
+          title: $('gTitle').value,
+          date: $('gDate').value,
+          time: $('gTime').value,
+          location: $('gVenue').value,
+          category: $('gCategory').value,
+          description: $('gTitle').value + ' at ' + $('gVenue').value,
+          imageUrl,
+          status: 'upcoming',
+        };
+
+        const res = await fetch(API + '/api/gigs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(gigData),
+          credentials: 'include',
+        });
+        const json = await res.json();
+        if (!json.success) throw new Error(json.errors?.[0] || json.error || 'Failed to save gig');
+
+        showStatus('Gig added successfully!', 'success');
+        $('gigForm').reset();
+        loadGigsList();
+      } catch (err) {
+        showStatus('Error: ' + err.message, 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'SAVE GIG';
+      }
+    }
+
+    /* ── Load Gigs ── */
+    async function loadGigsList() {
+      const container = $('gigsListContainer');
+      try {
+        const res = await fetch(API + '/api/gigs');
+        const json = await res.json();
+        if (!json.success) throw new Error(json.error || 'Failed to load gigs');
+
+        const gigs = json.data || [];
+        if (gigs.length === 0) {
+          container.innerHTML = '<p style="color:var(--muted)">No gigs found.</p>';
+          return;
+        }
+
+        container.innerHTML = gigs.map(g => `
+          <div class="gig-row" id="row-${g.id}">
+            <div>
+              <div class="gig-row-title">${escapeHtml(g.title)}</div>
+              <div class="gig-row-date">${escapeHtml(g.date)}</div>
+            </div>
+            <button class="btn-del" data-id="${g.id}">Delete</button>
+          </div>
+        `).join('');
+
+        container.querySelectorAll('.btn-del').forEach(btn => {
+          btn.addEventListener('click', () => deleteGig(btn.dataset.id));
+        });
+      } catch (e) {
+        container.innerHTML = '<p style="color:red">Error loading gigs: ' + escapeHtml(e.message) + '</p>';
+      }
+    }
+
+    /* ── Delete Gig ── */
+    async function deleteGig(id) {
+      if (!confirm('Delete this gig?')) return;
+      try {
+        const res = await fetch(API + '/api/gigs/' + id, {
+          method: 'DELETE',
+          credentials: 'include',
+        });
+        const json = await res.json();
+        if (json.success) {
+          const row = $('row-' + id);
+          if (row) row.remove();
+          showStatus('Gig deleted', 'success');
+        } else {
+          showStatus('Error deleting gig', 'error');
+        }
+      } catch (e) {
+        showStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    /* ── Event Listeners ── */
+    $('loginBtn').addEventListener('click', handleLogin);
+    $('logoutBtn').addEventListener('click', handleLogout);
+    $('gigForm').addEventListener('submit', createGig);
+
+    ['adminUser', 'adminPwd'].forEach(id => {
+      $(id).addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleLogin();
+      });
+    });
+
+    checkAuth();
+  </script>
+</body>
+</html>
